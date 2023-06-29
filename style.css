@@ -173,6 +173,5 @@
   .calendar__day-number--current {
     background-color: #020202;
     border-radius: 50%;
-    box-shadow: 5px #ff0000;
     color: #c9fb00;
   }
