@@ -1,39 +1,47 @@
-const title = document.querySelector("h1");
-if (title) {
-	title.addEventListener("mouseenter", () => {
-		gsap.to(".distort feDisplacementMap", 1, {
-			attr: {
-				scale: 100
-			},
-			ease: "circ.out"
-		});
-		gsap.to(".distort feTurbulence", 1, {
-			attr: {
-				baseFrequency: '2.08 .08'
-			},
-			ease: "circ.out"
-		}, 1);
-		gsap.to(title, 1, {
-			fontVariationSettings: "'wght' 650",
-			ease: "back.out"
-		});
-	});
-	title.addEventListener("mouseleave", () => {
-		gsap.to(".distort feDisplacementMap", 1, {
-			attr: {
-				scale: 0
-			},
-			ease: "circ.out"
-		}, 1);
-		gsap.to(".distort feTurbulence", 1, {
-			attr: {
-				baseFrequency: '2.01 .01'
-			},
-			ease: "circ.out"
-		}, 1);
-		gsap.to(title, 1, {
-			fontVariationSettings: "'wght' 700",
-			ease: "back.out"
-		}, 1);
-	});
+const months = [
+	"Январь",
+	"Февраль",
+	"Март",
+	"Апрель",
+	"Май",
+	"Июнь",
+	"Июль",
+	"Август",
+	"Сентябрь",
+	"Октябрь",
+	"Ноябрь",
+	"Декабрь"
+];
+
+// get current date values
+const currentDate = new Date();
+const currentYear = currentDate.getFullYear();
+const currentMonth = currentDate.getMonth();
+const currentDay = currentDate.getDate();
+
+// set month and year
+document.querySelector(".calendar__month").innerText =
+	months[currentDate.getMonth()];
+document.querySelector(".calendar__year").innerText = currentYear;
+
+// create grid of days
+let daysInMonth = new Date(currentYear, currentMonth + 1, 0).getDate();
+let week = document.createElement("div");
+week.classList.add("calendar__day-numbers-row");
+
+for (i = 1; i <= daysInMonth; i++) {
+	let day = document.createElement("span");
+	day.classList.add("calendar__day-number");
+	day.innerText = i;
+	i == currentDay && day.classList.add("calendar__day-number--current");
+	week.append(day);
+
+	if (new Date(currentYear, currentMonth, i).getDay() == 6 || i == daysInMonth) {
+		document.querySelector(".calendar__day-numbers").append(week);
+
+		if (i != daysInMonth) {
+			week = document.createElement("div");
+			week.classList.add("calendar__day-numbers-row");
+		}
+	}
 }
