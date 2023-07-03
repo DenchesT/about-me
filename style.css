@@ -4,8 +4,8 @@
   }
   
   @font-face {
-    font-family: 'JetBrains_Mono_VariableFont' ;
-    src: url(../fonts/JetBrains_Mono/JetBrainsMono-VariableFont_wght.ttf);
+    font-family: 'JetBrainsMono-Light' ;
+    src: url(../fonts/JetBrains_Mono/JetBrainsMono-Light);
   }
   
   @font-face {
@@ -14,7 +14,7 @@
   }
   
   body {
-    font-family: 'JetBrains_Mono_VariableFont', sans-serif;
+    font-family: 'etBrainsMono-Light', sans-serif;
   }
   
   .bg-gradient{
